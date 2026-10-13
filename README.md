@@ -82,7 +82,7 @@ NeuroGuard_EEG_Seizure_Detection/
 | **Phase 1** | Inspect environment & create permanent local project structure | **COMPLETED** | Verified local directories & hardware specs |
 | **Phase 2** | Initialize configurations, requirements, diagnostics & baseline tests | **COMPLETED** | `config.yaml`, `validate_env.py`, `pytest` pass |
 | **Phase 3** | Verify dataset access & inspect small subset of CHB-MIT EDFs | **COMPLETED** | Downloaded `chb01_03`, `chb02_16`, `chb03_01` & verified annotations |
-| **Phase 4** | Implement preprocessing, annotation parsing & feature extraction | *Pending* | Filters, Hjorth features, spectral band powers |
+| **Phase 4** | Implement preprocessing, annotation parsing & feature extraction | **COMPLETED** | Zero-phase filters, normalizer, 306 biomarkers, tensors in `data/processed/` |
 | **Phase 5** | Train baseline classical models (Logistic Regression, Random Forest, XGBoost) | *Pending* | Saved baselines, ROC-AUC / PR-AUC metrics |
 | **Phase 6** | Implement 1D CNN & comparative evaluation | *Pending* | PyTorch 1D-CNN checkpoints & confusion matrices |
 | **Phase 7** | Implement CNN-LSTM spatio-temporal architecture | *Pending* | Temporal sequence model & benchmark logs |
