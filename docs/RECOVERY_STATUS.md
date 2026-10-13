@@ -42,14 +42,27 @@
 - Preprocessing and feature tests: 5/5 passed. Total test suite: **18/18 passed in 5.32s**.
 - Environment updates: `xgboost 3.4.1` successfully installed and verified.
 
+### ✅ Phase 5: Classical ML Models (Patient-Independent Benchmark)
+- `src/models/classical.py`: Modular wrappers for Logistic Regression, Random Forest, and XGBoost with automated imbalance handling (`class_weight='balanced'`, `scale_pos_weight`).
+- `src/evaluation/metrics.py`: Clinical diagnostic metrics module (Accuracy, Sensitivity/Recall, Specificity, Precision, F1, ROC-AUC, PR-AUC, Confusion Matrix, JSON serializing).
+- `src/training/train_classical.py`: End-to-end training and evaluation script.
+- Saved model checkpoints in `artifacts/models/`:
+  - `logistic_regression.joblib`
+  - `random_forest.joblib`
+  - `xgboost.joblib`
+- Saved benchmark metrics in `artifacts/metrics/classical_models_benchmark.json`:
+  - **Logistic Regression**: Val ROC-AUC: 0.7308, Test ROC-AUC: 0.7957 (Recall: 74.07%)
+  - **Random Forest**: Val ROC-AUC: 0.9734, Test ROC-AUC: 0.9429 (Spec: 99.55%)
+  - **XGBoost**: Val ROC-AUC: 0.9500 (F1: 0.8172, Recall: 90.48%), **Test ROC-AUC: 0.9305, Test Recall: 100.0%** (27/27 seizure windows detected)!
+- Pytest test suite: **22/22 passed in 7.21s**.
+
 ---
 
 ## 2. Incomplete / Remaining Stages
 
 | Phase | Description | Status |
 | :--- | :--- | :---: |
-| **Phase 5** | Classical ML Models: Logistic Regression, Random Forest, XGBoost training & metrics | *Ready to Execute* |
-| **Phase 6** | Deep Learning: 1D CNN architecture, training loop & comparative evaluation | *Pending* |
+| **Phase 6** | Deep Learning: 1D CNN architecture, training loop & comparative evaluation | *Ready to Execute* |
 | **Phase 7** | Deep Learning: Spatio-temporal CNN-LSTM architecture | *Pending* |
 | **Phase 8** | Patient-Independent Optuna tuning, MLflow, XAI (SHAP) & 8+ Analytical Plots | *Pending* |
 | **Phase 9** | FastAPI REST service (`/health`, `/predict`, `/model-info`) & endpoint tests | *Pending* |
@@ -61,4 +74,4 @@
 ---
 
 ## 3. Immediate Next Step
-- **Single Safest Next Step:** Execute **Phase 5** — implement `src/models/classical.py`, `src/training/train_classical.py`, and `tests/test_classical_models.py` to train and evaluate Logistic Regression, Random Forest, and XGBoost on the verified patient-independent splits, saving model weights and metric logs to disk.
+- **Single Safest Next Step:** Execute **Phase 6** — implement PyTorch 1D CNN architecture (`src/models/cnn1d.py`), neural dataset loader (`src/data/torch_dataset.py`), deep learning training pipeline with early stopping & checkpointing (`src/training/train_cnn.py`), and evaluate against the classical baselines.

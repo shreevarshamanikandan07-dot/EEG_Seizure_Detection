@@ -1,0 +1,109 @@
+{
+  "experiment": "patient_independent_classical_baselines",
+  "partitions": {
+    "train_patient": "chb01",
+    "val_patient": "chb02",
+    "test_patient": "chb03"
+  },
+  "models": {
+    "logistic_regression": {
+      "checkpoint_path": "C:\\Users\\shree\\OneDrive\\Desktop\\AML Cat 2 project\\NeuroGuard_EEG_Seizure_Detection\\artifacts\\models\\logistic_regression.joblib",
+      "validation_metrics": {
+        "accuracy": 0.7218543046357616,
+        "precision": 0.5,
+        "recall": 0.7619047619047619,
+        "specificity": 0.7064220183486238,
+        "f1": 0.6037735849056604,
+        "roc_auc": 0.730777632153779,
+        "pr_auc": 0.41159099122165166,
+        "true_positives": 32,
+        "true_negatives": 77,
+        "false_positives": 32,
+        "false_negatives": 10,
+        "total_samples": 151,
+        "total_seizures": 42
+      },
+      "test_metrics": {
+        "accuracy": 0.7595744680851064,
+        "precision": 0.15873015873015872,
+        "recall": 0.7407407407407407,
+        "specificity": 0.7607223476297968,
+        "f1": 0.26143790849673204,
+        "roc_auc": 0.7957110609480812,
+        "pr_auc": 0.3933724226656082,
+        "true_positives": 20,
+        "true_negatives": 337,
+        "false_positives": 106,
+        "false_negatives": 7,
+        "total_samples": 470,
+        "total_seizures": 27
+      }
+    },
+    "random_forest": {
+      "checkpoint_path": "C:\\Users\\shree\\OneDrive\\Desktop\\AML Cat 2 project\\NeuroGuard_EEG_Seizure_Detection\\artifacts\\models\\random_forest.joblib",
+      "validation_metrics": {
+        "accuracy": 0.8675496688741722,
+        "precision": 0.9230769230769231,
+        "recall": 0.5714285714285714,
+        "specificity": 0.981651376146789,
+        "f1": 0.7058823529411765,
+        "roc_auc": 0.9733508082131935,
+        "pr_auc": 0.9446181492566558,
+        "true_positives": 24,
+        "true_negatives": 107,
+        "false_positives": 2,
+        "false_negatives": 18,
+        "total_samples": 151,
+        "total_seizures": 42
+      },
+      "test_metrics": {
+        "accuracy": 0.9446808510638298,
+        "precision": 0.6,
+        "recall": 0.1111111111111111,
+        "specificity": 0.9954853273137697,
+        "f1": 0.1875,
+        "roc_auc": 0.9428977510241618,
+        "pr_auc": 0.5297114910514328,
+        "true_positives": 3,
+        "true_negatives": 441,
+        "false_positives": 2,
+        "false_negatives": 24,
+        "total_samples": 470,
+        "total_seizures": 27
+      }
+    },
+    "xgboost": {
+      "checkpoint_path": "C:\\Users\\shree\\OneDrive\\Desktop\\AML Cat 2 project\\NeuroGuard_EEG_Seizure_Detection\\artifacts\\models\\xgboost.joblib",
+      "validation_metrics": {
+        "accuracy": 0.8874172185430463,
+        "precision": 0.7450980392156863,
+        "recall": 0.9047619047619048,
+        "specificity": 0.8807339449541285,
+        "f1": 0.8172043010752689,
+        "roc_auc": 0.9499781564001748,
+        "pr_auc": 0.9070745699429292,
+        "true_positives": 38,
+        "true_negatives": 96,
+        "false_positives": 13,
+        "false_negatives": 4,
+        "total_samples": 151,
+        "total_seizures": 42
+      },
+      "test_metrics": {
+        "accuracy": 0.8468085106382979,
+        "precision": 0.2727272727272727,
+        "recall": 1.0,
+        "specificity": 0.837471783295711,
+        "f1": 0.42857142857142855,
+        "roc_auc": 0.9304824011370287,
+        "pr_auc": 0.3562905043646306,
+        "true_positives": 27,
+        "true_negatives": 371,
+        "false_positives": 72,
+        "false_negatives": 0,
+        "total_samples": 470,
+        "total_seizures": 27
+      }
+    }
+  }
+}
