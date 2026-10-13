@@ -1,55 +1,59 @@
 /* =========================================================================
    NeuroGuard — Medical AI Research Dashboard: Dark Glassmorphism Design System
+   Consolidated & Complete Theme Specifications
    ========================================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
+  /* Core Theme Tokens */
   --bg-void: #050811;
-  --bg-primary: #070D1A;
-  --bg-secondary: #0D1629;
-  --bg-glass: rgba(13, 22, 41, 0.72);
-  --bg-glass-elevated: rgba(18, 30, 56, 0.82);
-  --bg-glass-interactive: rgba(24, 40, 72, 0.65);
-  
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-glass: rgba(255, 255, 255, 0.12);
-  --border-cyan: rgba(0, 240, 255, 0.35);
-  --border-violet: rgba(168, 85, 247, 0.35);
+  --bg-main: #070B14;
+  --bg-sidebar: #0B1220;
+  --bg-card: rgba(18, 30, 56, 0.85);
+  --bg-card-elevated: rgba(22, 38, 70, 0.90);
+  --bg-input: #0B1220;
 
-  --cyan-neon: #00F0FF;
-  --cyan-muted: #38BDF8;
-  --blue-electric: #3B82F6;
-  --violet-glow: #A855F7;
-  --violet-deep: #7C3AED;
-  --emerald-status: #10B981;
-  --amber-warning: #F59E0B;
-  --crimson-alarm: #EF4444;
+  --text-primary: #F1F5F9;
+  --text-secondary: #B8C4D9;
+  --text-muted: #94A3B8;
 
-  --text-primary: #F8FAFC;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
-  
+  --accent-cyan: #67E8F9;
+  --accent-cyan-neon: #00F0FF;
+  --accent-violet: #A78BFA;
+  --accent-violet-deep: #8B5CF6;
+
+  --status-green: #34D399;
+  --status-green-glow: #10B981;
+  --status-amber: #FBBF24;
+  --status-red: #F87171;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-cyan: rgba(103, 232, 249, 0.35);
+  --border-violet: rgba(167, 139, 250, 0.35);
+
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
-  --shadow-cyan-glow: 0 0 24px rgba(0, 240, 255, 0.15);
-  --shadow-violet-glow: 0 0 24px rgba(168, 85, 247, 0.15);
+  --shadow-card: 0 8px 32px 0 rgba(0, 0, 0, 0.55);
+  --shadow-cyan-glow: 0 0 20px rgba(0, 240, 255, 0.20);
+  --shadow-violet-glow: 0 0 20px rgba(167, 139, 250, 0.20);
 }
 
-/* Base Body & Streamlit Container Override */
-html, body, [data-testid="stAppViewContainer"] {
-  background-color: var(--bg-void) !important;
+/* =========================================================================
+   1. Global Background & Base Typography
+   ========================================================================= */
+html, body, [data-testid="stAppViewContainer"], .stApp {
+  background-color: var(--bg-main) !important;
   background-image: 
-    radial-gradient(circle at 18% 12%, rgba(0, 240, 255, 0.035) 0%, transparent 45%),
-    radial-gradient(circle at 82% 28%, rgba(168, 85, 247, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 50% 85%, rgba(59, 130, 246, 0.025) 0%, transparent 60%) !important;
+    radial-gradient(circle at 15% 10%, rgba(103, 232, 249, 0.035) 0%, transparent 45%),
+    radial-gradient(circle at 85% 25%, rgba(167, 139, 250, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(59, 130, 246, 0.025) 0%, transparent 60%) !important;
   color: var(--text-primary) !important;
   font-family: var(--font-sans) !important;
   overflow-x: hidden !important;
 }
 
-/* Header & Main Container Padding */
+/* Main Container Layout */
 .block-container {
   padding-top: 1.5rem !important;
   padding-bottom: 3rem !important;
@@ -58,18 +62,43 @@ html, body, [data-testid="stAppViewContainer"] {
   max-width: 1440px !important;
 }
 
-/* Top App Header */
 header[data-testid="stHeader"] {
   background: transparent !important;
 }
 
-/* Sidebar Custom Glassmorphism */
-[data-testid="stSidebar"] {
-  background: rgba(7, 13, 26, 0.88) !important;
+/* Global Headings & Paragraphs */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary) !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.015em !important;
+}
+
+p, span, label {
+  color: var(--text-secondary);
+}
+
+code {
+  background: rgba(103, 232, 249, 0.10) !important;
+  color: var(--accent-cyan) !important;
+  border: 1px solid rgba(103, 232, 249, 0.25) !important;
+  border-radius: 4px !important;
+  padding: 0.15rem 0.4rem !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.85em !important;
+}
+
+/* =========================================================================
+   2. Sidebar Styling & Contrast Fixes
+   ========================================================================= */
+[data-testid="stSidebar"],
+section[data-testid="stSidebar"] {
+  background-color: var(--bg-sidebar) !important;
+  background: var(--bg-sidebar) !important;
   backdrop-filter: blur(24px) !important;
   -webkit-backdrop-filter: blur(24px) !important;
   border-right: 1px solid var(--border-subtle) !important;
-  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 4px 0 28px rgba(0, 0, 0, 0.6) !important;
 }
 
 [data-testid="stSidebar"] .block-container {
@@ -78,34 +107,64 @@ header[data-testid="stHeader"] {
   padding-right: 1.25rem !important;
 }
 
-/* Custom Navigation Brand Header */
+/* Sidebar Section Headers */
+.sidebar-section-header,
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3,
+[data-testid="stSidebar"] h4 {
+  color: var(--text-primary) !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.07em !important;
+  margin-top: 1.25rem !important;
+  margin-bottom: 0.65rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding-bottom: 0.35rem !important;
+}
+
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] span {
+  color: var(--text-secondary) !important;
+}
+
+[data-testid="stSidebar"] hr {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  margin: 1.25rem 0 !important;
+}
+
+/* Brand Header */
 .brand-container {
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  padding: 0.75rem 0.5rem 1.25rem 0.5rem;
+  padding: 0.5rem 0.5rem 1.15rem 0.5rem;
   border-bottom: 1px solid var(--border-subtle);
   margin-bottom: 1.25rem;
 }
 
 .brand-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(168, 85, 247, 0.25));
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.22), rgba(167, 139, 250, 0.28));
   border: 1px solid var(--border-cyan);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   box-shadow: var(--shadow-cyan-glow);
 }
 
 .brand-title {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.28rem;
+  font-weight: 800;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #FFFFFF 30%, #A5F3FC 100%);
+  background: linear-gradient(135deg, #FFFFFF 40%, #A5F3FC 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1.2;
@@ -119,30 +178,256 @@ header[data-testid="stHeader"] {
   font-weight: 600;
 }
 
-/* Ambient Cursor Following Glow (Decorative Layer) */
-#ambient-cursor-glow {
-  position: fixed;
-  pointer-events: none;
-  width: 650px;
-  height: 650px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.045) 0%, rgba(168, 85, 247, 0.025) 35%, transparent 70%);
-  z-index: 999999;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease;
+/* =========================================================================
+   3. Sidebar Navigation: Radio Controls
+   ========================================================================= */
+[data-testid="stRadio"] div[role="radiogroup"] {
+  gap: 0.45rem !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
-/* Glassmorphism Card System */
+[data-testid="stRadio"] label[data-baseweb="radio"] {
+  background: rgba(18, 30, 56, 0.65) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  border-radius: 9px !important;
+  padding: 0.55rem 0.85rem !important;
+  margin: 0 !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Radio Option Text Contrast (Universal inside stRadio) */
+[data-testid="stRadio"] * {
+  color: var(--text-secondary) !important;
+}
+
+[data-testid="stRadio"] label[data-baseweb="radio"] p,
+[data-testid="stRadio"] label[data-baseweb="radio"] span,
+[data-testid="stRadio"] div[data-testid="stMarkdownContainer"] p {
+  color: var(--text-secondary) !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+  transition: color 0.15s ease !important;
+}
+
+/* Radio Option Hover State */
+[data-testid="stRadio"] label[data-baseweb="radio"]:hover {
+  background: rgba(103, 232, 249, 0.12) !important;
+  border-color: var(--border-cyan) !important;
+  transform: translateX(2px) !important;
+}
+
+[data-testid="stRadio"] label[data-baseweb="radio"]:hover * {
+  color: var(--accent-cyan) !important;
+}
+
+/* Radio Option Active/Checked State */
+[data-testid="stRadio"] label[data-baseweb="radio"]:has(input:checked),
+[data-testid="stRadio"] label[data-baseweb="radio"][aria-checked="true"] {
+  background: rgba(0, 240, 255, 0.18) !important;
+  border-color: var(--accent-cyan-neon) !important;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.20) !important;
+}
+
+[data-testid="stRadio"] label[data-baseweb="radio"]:has(input:checked) *,
+[data-testid="stRadio"] label[data-baseweb="radio"][aria-checked="true"] * {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+}
+
+/* Radio Button Circle Indicator */
+[data-testid="stRadio"] div[data-testid="stRadioButton"] > div {
+  border-color: rgba(255, 255, 255, 0.30) !important;
+  background: rgba(7, 11, 20, 0.90) !important;
+}
+
+[data-testid="stRadio"] label:has(input:checked) div[data-testid="stRadioButton"] > div {
+  border-color: var(--accent-cyan-neon) !important;
+  background: var(--accent-cyan-neon) !important;
+}
+
+/* =========================================================================
+   4. Form Widgets & Input Labels
+   ========================================================================= */
+/* Widget Label Typography & Contrast */
+[data-testid="stWidgetLabel"] label p,
+[data-testid="stWidgetLabel"] p,
+label[data-testid="stWidgetLabel"] p,
+[data-testid="stSidebar"] [data-testid="stWidgetLabel"] p,
+[data-testid="stSidebar"] label p {
+  color: var(--text-primary) !important;
+  font-size: 0.86rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+  margin-bottom: 0.35rem !important;
+}
+
+/* Tooltip / Help Icons */
+[data-testid="stTooltipIcon"] svg,
+[data-testid="stTooltipIcon"] button {
+  fill: var(--accent-cyan) !important;
+  stroke: var(--accent-cyan) !important;
+  color: var(--accent-cyan) !important;
+  opacity: 0.95 !important;
+}
+
+/* Tooltip Content Popover */
+[data-testid="stTooltipContent"],
+div[data-baseweb="tooltip"] {
+  background-color: var(--bg-sidebar) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-cyan) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7) !important;
+  font-size: 0.82rem !important;
+}
+
+/* Selectbox Trigger Container (Closed state) */
+[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
+div[data-baseweb="select"] > div {
+  background-color: var(--bg-sidebar) !important;
+  background: var(--bg-sidebar) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-radius: 8px !important;
+  color: var(--text-primary) !important;
+  transition: all 0.2s ease !important;
+}
+
+div[data-baseweb="select"] > div:hover,
+div[data-baseweb="select"] > div:focus-within {
+  border-color: var(--accent-cyan-neon) !important;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.25) !important;
+}
+
+div[data-baseweb="select"] * {
+  color: var(--text-primary) !important;
+  font-size: 0.88rem !important;
+}
+
+div[data-baseweb="select"] svg {
+  fill: var(--accent-cyan) !important;
+}
+
+/* =========================================================================
+   5. Dropdown Menu (BaseWeb Popover) Theme Consistency
+   ========================================================================= */
+[data-baseweb="popover"],
+[data-baseweb="popover"] > div,
+div[data-baseweb="menu"],
+ul[role="listbox"],
+div[role="listbox"] {
+  background-color: var(--bg-sidebar) !important;
+  background: var(--bg-sidebar) !important;
+  border: 1px solid var(--border-cyan) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.85), 0 0 20px rgba(0, 240, 255, 0.12) !important;
+  overflow: hidden !important;
+}
+
+li[role="option"],
+div[role="option"] {
+  background-color: var(--bg-sidebar) !important;
+  color: var(--text-secondary) !important;
+  font-size: 0.85rem !important;
+  padding: 0.65rem 1rem !important;
+  transition: all 0.15s ease !important;
+}
+
+li[role="option"] * {
+  color: var(--text-secondary) !important;
+  background-color: transparent !important;
+}
+
+li[role="option"]:hover,
+li[role="option"][aria-selected="true"],
+li[role="option"][data-highlighted="true"],
+div[role="option"]:hover {
+  background-color: rgba(0, 240, 255, 0.16) !important;
+}
+
+li[role="option"]:hover *,
+li[role="option"][aria-selected="true"] *,
+li[role="option"][data-highlighted="true"] *,
+div[role="option"]:hover * {
+  color: var(--accent-cyan-neon) !important;
+  font-weight: 600 !important;
+}
+
+/* Slider Track, Fill & Thumb */
+[data-testid="stSlider"] div[data-baseweb="slider"] {
+  margin-top: 0.35rem !important;
+}
+
+[data-testid="stSlider"] [data-baseweb="slider"] > div {
+  background: rgba(255, 255, 255, 0.14) !important;
+}
+
+[data-testid="stSlider"] [data-baseweb="slider"] > div > div {
+  background: linear-gradient(90deg, #3B82F6, var(--accent-cyan-neon)) !important;
+}
+
+[data-testid="stSlider"] div[data-baseweb="slider"] div[role="slider"] {
+  background-color: var(--accent-cyan-neon) !important;
+  border: 2px solid #FFFFFF !important;
+  box-shadow: 0 0 12px var(--accent-cyan-neon) !important;
+}
+
+[data-testid="stSlider"] div[data-testid="stThumbValue"] {
+  color: var(--accent-cyan-neon) !important;
+  font-family: var(--font-mono) !important;
+  font-weight: 700 !important;
+  font-size: 0.86rem !important;
+}
+
+[data-testid="stSlider"] [data-testid="stTickBar"] * {
+  color: var(--text-muted) !important;
+  font-size: 0.74rem !important;
+}
+
+/* =========================================================================
+   6. Buttons (Interactive Dark Glass Style)
+   ========================================================================= */
+button[kind="primary"],
+button[kind="secondary"],
+[data-testid="baseButton-secondary"],
+[data-testid="baseButton-primary"],
+.stButton > button {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-cyan) !important;
+  color: var(--text-primary) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  padding: 0.5rem 1rem !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+button[kind="primary"]:hover,
+button[kind="secondary"]:hover,
+[data-testid="baseButton-secondary"]:hover,
+[data-testid="baseButton-primary"]:hover,
+.stButton > button:hover {
+  background: rgba(0, 240, 255, 0.18) !important;
+  border-color: var(--accent-cyan-neon) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.28) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* =========================================================================
+   7. Glassmorphism Card System (Main Dashboard)
+   ========================================================================= */
 .glass-panel {
-  background: var(--bg-glass);
+  background: var(--bg-card);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--border-subtle);
   border-radius: 14px;
   padding: 1.25rem 1.5rem;
-  box-shadow: var(--shadow-glass);
+  box-shadow: var(--shadow-card);
   transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
               border-color 0.22s ease, 
               box-shadow 0.22s ease;
@@ -151,23 +436,23 @@ header[data-testid="stHeader"] {
 
 .glass-panel:hover {
   border-color: rgba(255, 255, 255, 0.16);
-  box-shadow: 0 12px 36px 0 rgba(0, 0, 0, 0.55);
+  box-shadow: 0 12px 36px 0 rgba(0, 0, 0, 0.65);
 }
 
 .glass-panel-elevated {
-  background: var(--bg-glass-elevated);
-  border: 1px solid var(--border-glass);
+  background: var(--bg-card-elevated);
+  border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .glass-panel-cyan:hover {
   border-color: var(--border-cyan);
-  box-shadow: var(--shadow-cyan-glow), var(--shadow-glass);
+  box-shadow: var(--shadow-cyan-glow), var(--shadow-card);
   transform: translateY(-2px);
 }
 
 .glass-panel-violet:hover {
   border-color: var(--border-violet);
-  box-shadow: var(--shadow-violet-glow), var(--shadow-glass);
+  box-shadow: var(--shadow-violet-glow), var(--shadow-card);
   transform: translateY(-2px);
 }
 
@@ -176,7 +461,7 @@ header[data-testid="stHeader"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(13, 22, 41, 0.6);
+  background: rgba(13, 22, 41, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-subtle);
@@ -217,7 +502,7 @@ header[data-testid="stHeader"] {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.32rem 0.75rem;
+  padding: 0.35rem 0.8rem;
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 600;
@@ -227,9 +512,9 @@ header[data-testid="stHeader"] {
 }
 
 .status-pill-green {
-  background: rgba(16, 185, 129, 0.12);
+  background: rgba(16, 185, 129, 0.14);
   color: #34D399;
-  border-color: rgba(16, 185, 129, 0.28);
+  border-color: rgba(16, 185, 129, 0.32);
 }
 
 .status-pill-green .pulse-dot {
@@ -241,9 +526,9 @@ header[data-testid="stHeader"] {
 }
 
 .status-pill-cyan {
-  background: rgba(0, 240, 255, 0.1);
+  background: rgba(0, 240, 255, 0.12);
   color: #67E8F9;
-  border-color: rgba(0, 240, 255, 0.25);
+  border-color: rgba(0, 240, 255, 0.30);
 }
 
 .status-pill-cyan .pulse-dot {
@@ -255,22 +540,22 @@ header[data-testid="stHeader"] {
 }
 
 .status-pill-amber {
-  background: rgba(245, 158, 11, 0.12);
+  background: rgba(245, 158, 11, 0.14);
   color: #FBBF24;
-  border-color: rgba(245, 158, 11, 0.3);
+  border-color: rgba(245, 158, 11, 0.32);
 }
 
 .status-pill-red {
-  background: rgba(239, 68, 68, 0.16);
+  background: rgba(239, 68, 68, 0.18);
   color: #F87171;
-  border-color: rgba(239, 68, 68, 0.4);
+  border-color: rgba(239, 68, 68, 0.42);
 }
 
 /* Clinical Prototype Banner */
 .clinical-disclaimer-card {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.07) 0%, rgba(239, 68, 68, 0.04) 100%);
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  border-left: 4px solid var(--amber-warning);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(239, 68, 68, 0.05) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  border-left: 4px solid var(--status-amber);
   border-radius: 10px;
   padding: 0.75rem 1.15rem;
   margin-bottom: 1.25rem;
@@ -291,7 +576,7 @@ header[data-testid="stHeader"] {
 }
 
 .kpi-card {
-  background: var(--bg-glass);
+  background: var(--bg-card);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--border-subtle);
@@ -304,8 +589,8 @@ header[data-testid="stHeader"] {
 
 .kpi-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(0, 240, 255, 0.3);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5), 0 0 16px rgba(0, 240, 255, 0.08);
+  border-color: var(--border-cyan);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55), 0 0 16px rgba(0, 240, 255, 0.10);
 }
 
 .kpi-card::before {
@@ -349,9 +634,11 @@ header[data-testid="stHeader"] {
   font-family: var(--font-mono);
 }
 
-/* Tabs Redesign */
+/* =========================================================================
+   8. Tabs System
+   ========================================================================= */
 .stTabs [data-baseweb="tab-list"] {
-  background: rgba(13, 22, 41, 0.6) !important;
+  background: rgba(13, 22, 41, 0.65) !important;
   border-radius: 12px !important;
   padding: 0.35rem !important;
   border: 1px solid var(--border-subtle) !important;
@@ -370,15 +657,15 @@ header[data-testid="stHeader"] {
 }
 
 .stTabs [data-baseweb="tab"]:hover {
-  color: var(--cyan-neon) !important;
-  background: rgba(0, 240, 255, 0.05) !important;
+  color: var(--accent-cyan) !important;
+  background: rgba(0, 240, 255, 0.06) !important;
 }
 
 .stTabs [aria-selected="true"] {
-  background: rgba(0, 240, 255, 0.12) !important;
+  background: rgba(0, 240, 255, 0.14) !important;
   color: #FFFFFF !important;
   border: 1px solid var(--border-cyan) !important;
-  box-shadow: 0 0 16px rgba(0, 240, 255, 0.12) !important;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.14) !important;
 }
 
 .stTabs [data-baseweb="tab-border"] {
@@ -389,29 +676,26 @@ header[data-testid="stHeader"] {
   padding-top: 1.25rem !important;
 }
 
-/* Streamlit Inputs & Selectboxes */
-div[data-baseweb="select"] > div {
-  background: rgba(13, 22, 41, 0.75) !important;
-  border-color: var(--border-subtle) !important;
-  border-radius: 8px !important;
-  color: var(--text-primary) !important;
-  transition: all 0.2s ease !important;
-}
-
-div[data-baseweb="select"] > div:hover {
-  border-color: var(--border-cyan) !important;
-}
-
-/* Slider Track & Thumb */
-.stSlider div[data-baseweb="slider"] {
-  margin-top: 0.5rem !important;
-}
-
-/* Dataframe & Table Overrides */
+/* Dataframe Overrides */
 div[data-testid="stDataFrame"] {
   border: 1px solid var(--border-subtle) !important;
   border-radius: 12px !important;
   overflow: hidden !important;
+}
+
+/* Ambient Cursor Following Glow */
+#ambient-cursor-glow {
+  position: fixed;
+  pointer-events: none;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.045) 0%, rgba(167, 139, 250, 0.025) 35%, transparent 70%);
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
 }
 
 /* Custom Scrollbars */
@@ -421,16 +705,16 @@ div[data-testid="stDataFrame"] {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-void);
+  background: var(--bg-main);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.14);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 240, 255, 0.35);
+  background: var(--border-cyan);
 }
 
 /* Accessibility: Respect Reduced Motion */

@@ -236,7 +236,7 @@ with st.sidebar:
         unsafe_allow_html=True,
     )
 
-    st.markdown("### 🧭 Navigation")
+    st.markdown('<div class="sidebar-section-header">🧭 Navigation</div>', unsafe_allow_html=True)
     selected_nav = st.radio(
         "Navigation",
         options=[
@@ -250,7 +250,7 @@ with st.sidebar:
     )
 
     st.markdown("---")
-    st.markdown("### ⚙️ Inference Setup")
+    st.markdown('<div class="sidebar-section-header">⚙️ Inference Setup</div>', unsafe_allow_html=True)
 
     selected_model_name = st.selectbox(
         "Detection Architecture:",
@@ -289,7 +289,7 @@ with st.sidebar:
     )
 
     st.markdown("---")
-    st.markdown("### 📡 System Infrastructure")
+    st.markdown('<div class="sidebar-section-header">📡 System Infrastructure</div>', unsafe_allow_html=True)
 
     # Real status badge
     if api_status["online"]:
@@ -313,10 +313,10 @@ with st.sidebar:
 
     st.markdown(
         f"""
-        <div style="font-size: 0.76rem; color: #94A3B8; margin-top: 0.6rem; font-family: monospace;">
-            • Checkpoints Loaded: <strong>{len(models_dict)}</strong><br>
-            • Processing Unit: <strong>CPU (Intel/AMD)</strong><br>
-            • Leakage Prevention: <strong>Strict Patient Split</strong>
+        <div style="font-size: 0.78rem; color: #B8C4D9; margin-top: 0.65rem; font-family: 'JetBrains Mono', monospace; line-height: 1.6;">
+            • Checkpoints Loaded: <strong style="color: #67E8F9;">{len(models_dict)}</strong><br>
+            • Processing Unit: <strong style="color: #F1F5F9;">CPU (Intel/AMD)</strong><br>
+            • Leakage Prevention: <strong style="color: #34D399;">Strict Patient Split</strong>
         </div>
         """,
         unsafe_allow_html=True,
