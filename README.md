@@ -86,8 +86,8 @@ NeuroGuard_EEG_Seizure_Detection/
 | **Phase 5** | Train baseline classical models (Logistic Regression, Random Forest, XGBoost) | **COMPLETED** | LR, RF, XGBoost trained & saved; XGBoost Test ROC-AUC=0.9305, Recall=100% |
 | **Phase 6** | Implement 1D CNN & comparative evaluation | **COMPLETED** | PyTorch 1D CNN checkpointed (`cnn1d_best.pt`); Test ROC-AUC=0.8111, Recall=85.19% |
 | **Phase 7** | Implement CNN-LSTM spatio-temporal architecture | **COMPLETED** | CNN-LSTM checkpointed (`cnn_lstm_best.pt`); Test ROC-AUC=0.8379, PR-AUC=0.7751, Spec=85.33% |
-| **Phase 8** | Patient-independent Optuna tuning, MLflow, XAI & 8+ visualizations | *Pending* | SHAP plots, UMAP, ROC curves, spectrograms |
-| **Phase 9** | Implement FastAPI backend service | *Pending* | `/health`, `/predict`, `/model-info` endpoints |
+| **Phase 8** | Patient-independent Optuna tuning, MLflow, XAI & 11 visualizations | **COMPLETED** | Bayesian Optuna tuning (Test ROC-AUC=0.9659, Rec=100%), 11 publication figures in `artifacts/plots/`, 29 unit tests pass |
+| **Phase 9** | Implement FastAPI backend service | *In Progress / Next* | `/health`, `/predict`, `/explain`, `/model-info` endpoints |
 | **Phase 10**| Implement Streamlit interactive research dashboard | *Pending* | Multi-page clinical waveform & inference UI |
 | **Phase 11**| Containerize with Docker and Docker Compose | *Pending* | Local Docker build and container verification |
 | **Phase 12**| Cloud deployment preparation (Hugging Face / AWS) | *Pending* | Deployment manifest and live service checklist |

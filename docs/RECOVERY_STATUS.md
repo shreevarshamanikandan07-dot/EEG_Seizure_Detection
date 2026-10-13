@@ -83,8 +83,8 @@
 
 | Phase | Description | Status |
 | :--- | :--- | :---: |
-| **Phase 8** | Patient-Independent Optuna tuning, MLflow, XAI (SHAP) & 8+ Analytical Plots | *Ready to Execute* |
-| **Phase 9** | FastAPI REST service (`/health`, `/predict`, `/model-info`) & endpoint tests | *Pending* |
+| **Phase 8** | Patient-Independent Optuna tuning, MLflow, XAI & 11 Analytical Plots | **COMPLETED** (Optuna Test ROC-AUC: 0.9659, Sensitivity: 1.000; 11 figures generated; 29 unit tests passing) |
+| **Phase 9** | FastAPI REST service (`/health`, `/predict`, `/explain`, `/model-info`) & endpoint tests | *In Progress / Next* |
 | **Phase 10** | Streamlit biomedical research dashboard | *Pending* |
 | **Phase 11** | Local Docker container build & validation | *Pending* |
 | **Phase 12** | Cloud deployment configuration & readiness | *Pending* |
@@ -93,4 +93,4 @@
 ---
 
 ## 3. Immediate Next Step
-- **Single Safest Next Step:** Execute **Phase 8** — implement Optuna hyperparameter optimization (`src/training/tune_optuna.py`), MLflow logging integration (`src/training/mlflow_logger.py`), SHAP & Grad-CAM explainability (`src/explainability/explainer.py`), and generate all 8+ analytical visualizations in `artifacts/plots/`.
+- **Single Safest Next Step:** Execute **Phase 9** — Build FastAPI backend service (`src/api/app.py`, `src/api/schemas.py`, `tests/test_api.py`) exposing endpoints for system health, model metadata, multi-model inference, and XAI feature attributions with clinical disclaimers.
