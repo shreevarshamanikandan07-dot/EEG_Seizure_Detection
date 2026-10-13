@@ -1,0 +1,160 @@
+# ==============================================================================
+# NeuroGuard: EEG Seizure Detection Configuration
+# Patient-Independent Explainable Deep Learning Pipeline
+# ==============================================================================
+
+project:
+  name: "NeuroGuard_EEG_Seizure_Detection"
+  version: "0.1.0"
+  random_seed: 42
+  device: "cpu"  # 'cpu' or 'cuda' (automatically falls back to cpu if cuda unavailable)
+
+paths:
+  raw_data_dir: "data/raw"
+  processed_data_dir: "data/processed"
+  interim_data_dir: "data/interim"
+  artifacts_dir: "artifacts"
+  models_dir: "artifacts/models"
+  metrics_dir: "artifacts/metrics"
+  plots_dir: "artifacts/plots"
+  reports_dir: "artifacts/reports"
+  mlruns_dir: "artifacts/mlruns"
+
+dataset:
+  name: "CHB-MIT Scalp EEG Database"
+  physionet_url: "https://physionet.org/content/chbmit/1.0.0/"
+  sampling_rate: 256  # Hz (standard CHB-MIT recording rate)
+  # Channels standard across CHB-MIT montage (18-23 bipolar channels)
+  standard_channels:
+    - "FP1-F7"
+    - "F7-T7"
+    - "T7-P7"
+    - "P7-O1"
+    - "FP1-F3"
+    - "F3-C3"
+    - "C3-P3"
+    - "P3-O1"
+    - "FP2-F4"
+    - "F4-C4"
+    - "C4-P4"
+    - "P4-O2"
+    - "FP2-F8"
+    - "F8-T8"
+    - "T8-P8"
+    - "P8-O2"
+    - "FZ-CZ"
+    - "CZ-PZ"
+
+  # Initial validation subset (patient-independent split)
+  patient_split:
+    train_patients: ["chb01"]
+    val_patients: ["chb02"]
+    test_patients: ["chb03"]
+
+preprocessing:
+  bandpass:
+    enabled: true
+    low_freq: 0.5   # Hz (removes DC drift and slow movement artifacts)
+    high_freq: 40.0 # Hz (retains delta, theta, alpha, beta, early gamma; filters high freq EMG)
+    order: 4
+  notch:
+    enabled: true
+    freq: 60.0      # Hz (US power line frequency used in Boston Children's Hospital recordings)
+    quality_factor: 30.0
+  segmentation:
+    window_duration_sec: 4.0   # Window duration in seconds (4s * 256 Hz = 1024 samples)
+    step_duration_sec: 2.0     # 50% overlap for continuous temporal tracking
+    seizure_overlap_threshold: 0.5  # Window label is seizure if >=50% overlaps annotated seizure
+    non_seizure_subsample_ratio: 4  # Balanced subsampling to manage severe class imbalance
+
+features:
+  time_domain:
+    - "mean"
+    - "variance"
+    - "std"
+    - "rms"
+    - "kurtosis"
+    - "skewness"
+    - "hjorth_activity"
+    - "hjorth_mobility"
+    - "hjorth_complexity"
+    - "zero_crossing_rate"
+    - "peak_to_peak"
+  frequency_domain:
+    - "delta_power"   # 0.5 - 4.0 Hz
+    - "theta_power"   # 4.0 - 8.0 Hz
+    - "alpha_power"   # 8.0 - 13.0 Hz
+    - "beta_power"    # 13.0 - 30.0 Hz
+    - "gamma_power"   # 30.0 - 40.0 Hz
+    - "spectral_entropy"
+    - "dominant_frequency"
+
+models:
+  logistic_regression:
+    max_iter: 1000
+    class_weight: "balanced"
+    C: 1.0
+    solver: "lbfgs"
+  random_forest:
+    n_estimators: 100
+    max_depth: 10
+    class_weight: "balanced"
+    random_state: 42
+    n_jobs: -1
+  xgboost:
+    n_estimators: 100
+    max_depth: 5
+    learning_rate: 0.05
+    scale_pos_weight: 4.0
+    random_state: 42
+    eval_metric: "logloss"
+  cnn_1d:
+    in_channels: 18
+    num_classes: 2
+    conv_channels: [32, 64, 128]
+    kernel_size: 7
+    dropout: 0.3
+    fc_hidden: 128
+    learning_rate: 0.001
+    batch_size: 64
+    epochs: 15
+    early_stopping_patience: 4
+  cnn_lstm:
+    in_channels: 18
+    num_classes: 2
+    cnn_channels: [32, 64]
+    kernel_size: 5
+    lstm_hidden: 64
+    lstm_layers: 1
+    dropout: 0.3
+    fc_hidden: 64
+    learning_rate: 0.001
+    batch_size: 64
+    epochs: 15
+    early_stopping_patience: 4
+
+optuna:
+  n_trials: 10
+  timeout_seconds: 600
+  metric: "f1"
+  direction: "maximize"
+
+evaluation:
+  metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "specificity"
+    - "f1"
+    - "roc_auc"
+    - "pr_auc"
+  decision_threshold: 0.5
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+  reload: false
+
+frontend:
+  port: 8501
+  api_base_url: "http://localhost:8000"
