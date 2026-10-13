@@ -58,12 +58,23 @@
 
 ---
 
+### ✅ Phase 6: Deep Learning (1D CNN Architecture)
+- `src/models/cnn1d.py`: Multichannel 1D CNN with 3 temporal convolution blocks, batch normalization, GELU, and adaptive average pooling (67,938 trainable parameters).
+- `src/data/torch_dataset.py`: PyTorch `EEGWindowDataset` with class weighting and multi-worker DataLoader factory.
+- `src/training/train_cnn.py`: Deep learning training pipeline with weighted cross-entropy loss, AdamW, ReduceLROnPlateau, and early stopping.
+- Best checkpoint saved to `artifacts/models/cnn1d_best.pt` (epoch 4).
+- Benchmark metrics saved to `artifacts/metrics/cnn1d_benchmark.json`:
+  - **Validation (`chb02`)**: Sensitivity/Recall: **95.24%** (40/42 seizures detected), Specificity: 65.14%, ROC-AUC: 0.7508, F1: 0.6667.
+  - **Held-Out Test (`chb03`)**: Sensitivity/Recall: **85.19%** (23/27 seizures detected), Specificity: 63.43%, ROC-AUC: **0.8111**, PR-AUC: 0.3855.
+- Pytest test suite: **25/25 passed in 4.78s**.
+
+---
+
 ## 2. Incomplete / Remaining Stages
 
 | Phase | Description | Status |
 | :--- | :--- | :---: |
-| **Phase 6** | Deep Learning: 1D CNN architecture, training loop & comparative evaluation | *Ready to Execute* |
-| **Phase 7** | Deep Learning: Spatio-temporal CNN-LSTM architecture | *Pending* |
+| **Phase 7** | Deep Learning: Spatio-temporal CNN-LSTM architecture | *Ready to Execute* |
 | **Phase 8** | Patient-Independent Optuna tuning, MLflow, XAI (SHAP) & 8+ Analytical Plots | *Pending* |
 | **Phase 9** | FastAPI REST service (`/health`, `/predict`, `/model-info`) & endpoint tests | *Pending* |
 | **Phase 10** | Streamlit biomedical research dashboard | *Pending* |
@@ -74,4 +85,4 @@
 ---
 
 ## 3. Immediate Next Step
-- **Single Safest Next Step:** Execute **Phase 6** — implement PyTorch 1D CNN architecture (`src/models/cnn1d.py`), neural dataset loader (`src/data/torch_dataset.py`), deep learning training pipeline with early stopping & checkpointing (`src/training/train_cnn.py`), and evaluate against the classical baselines.
+- **Single Safest Next Step:** Execute **Phase 7** — implement PyTorch spatio-temporal architecture `EEG_CNNLSTM` (`src/models/cnn_lstm.py`), sequence training pipeline (`src/training/train_cnn_lstm.py`), and evaluate against 1D CNN and classical baselines.

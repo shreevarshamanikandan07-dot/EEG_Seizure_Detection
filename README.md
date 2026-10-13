@@ -84,7 +84,7 @@ NeuroGuard_EEG_Seizure_Detection/
 | **Phase 3** | Verify dataset access & inspect small subset of CHB-MIT EDFs | **COMPLETED** | Downloaded `chb01_03`, `chb02_16`, `chb03_01` & verified annotations |
 | **Phase 4** | Implement preprocessing, annotation parsing & feature extraction | **COMPLETED** | Zero-phase filters, normalizer, 306 biomarkers, tensors in `data/processed/` |
 | **Phase 5** | Train baseline classical models (Logistic Regression, Random Forest, XGBoost) | **COMPLETED** | LR, RF, XGBoost trained & saved; XGBoost Test ROC-AUC=0.9305, Recall=100% |
-| **Phase 6** | Implement 1D CNN & comparative evaluation | *Pending* | PyTorch 1D-CNN checkpoints & confusion matrices |
+| **Phase 6** | Implement 1D CNN & comparative evaluation | **COMPLETED** | PyTorch 1D CNN checkpointed (`cnn1d_best.pt`); Test ROC-AUC=0.8111, Recall=85.19% |
 | **Phase 7** | Implement CNN-LSTM spatio-temporal architecture | *Pending* | Temporal sequence model & benchmark logs |
 | **Phase 8** | Patient-independent Optuna tuning, MLflow, XAI & 8+ visualizations | *Pending* | SHAP plots, UMAP, ROC curves, spectrograms |
 | **Phase 9** | Implement FastAPI backend service | *Pending* | `/health`, `/predict`, `/model-info` endpoints |
