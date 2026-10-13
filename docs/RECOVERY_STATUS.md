@@ -68,14 +68,22 @@
   - **Held-Out Test (`chb03`)**: Sensitivity/Recall: **85.19%** (23/27 seizures detected), Specificity: 63.43%, ROC-AUC: **0.8111**, PR-AUC: 0.3855.
 - Pytest test suite: **25/25 passed in 4.78s**.
 
+### ✅ Phase 7: Deep Learning (Spatio-Temporal CNN-LSTM Architecture)
+- `src/models/cnn_lstm.py`: Hybrid Spatio-Temporal architecture combining 1D temporal convolutions with Long Short-Term Memory (53,762 trainable parameters).
+- `src/training/train_cnn_lstm.py`: Deep learning training pipeline with weighted cross-entropy loss, AdamW, ReduceLROnPlateau, and early stopping.
+- Best checkpoint saved to `artifacts/models/cnn_lstm_best.pt` (epoch 10).
+- Benchmark metrics saved to `artifacts/metrics/cnn_lstm_benchmark.json`:
+  - **Validation (`chb02`)**: Sensitivity/Recall: **90.48%** (38/42 seizures detected), Specificity: 71.56%, ROC-AUC: 0.8100, F1: 0.6847.
+  - **Held-Out Test (`chb03`)**: Accuracy: **85.11%**, Sensitivity/Recall: **81.48%** (22/27 seizures detected), Specificity: **85.33%** (60% fewer false positives vs pure 1D CNN), Precision: **25.29%**, ROC-AUC: **0.8379**, PR-AUC: **0.7751** (double 1D CNN).
+- Pytest test suite: **27/27 passed in 4.74s**.
+
 ---
 
 ## 2. Incomplete / Remaining Stages
 
 | Phase | Description | Status |
 | :--- | :--- | :---: |
-| **Phase 7** | Deep Learning: Spatio-temporal CNN-LSTM architecture | *Ready to Execute* |
-| **Phase 8** | Patient-Independent Optuna tuning, MLflow, XAI (SHAP) & 8+ Analytical Plots | *Pending* |
+| **Phase 8** | Patient-Independent Optuna tuning, MLflow, XAI (SHAP) & 8+ Analytical Plots | *Ready to Execute* |
 | **Phase 9** | FastAPI REST service (`/health`, `/predict`, `/model-info`) & endpoint tests | *Pending* |
 | **Phase 10** | Streamlit biomedical research dashboard | *Pending* |
 | **Phase 11** | Local Docker container build & validation | *Pending* |
@@ -85,4 +93,4 @@
 ---
 
 ## 3. Immediate Next Step
-- **Single Safest Next Step:** Execute **Phase 7** — implement PyTorch spatio-temporal architecture `EEG_CNNLSTM` (`src/models/cnn_lstm.py`), sequence training pipeline (`src/training/train_cnn_lstm.py`), and evaluate against 1D CNN and classical baselines.
+- **Single Safest Next Step:** Execute **Phase 8** — implement Optuna hyperparameter optimization (`src/training/tune_optuna.py`), MLflow logging integration (`src/training/mlflow_logger.py`), SHAP & Grad-CAM explainability (`src/explainability/explainer.py`), and generate all 8+ analytical visualizations in `artifacts/plots/`.
