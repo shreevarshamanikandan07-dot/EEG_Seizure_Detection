@@ -87,11 +87,11 @@ NeuroGuard_EEG_Seizure_Detection/
 | **Phase 6** | Implement 1D CNN & comparative evaluation | **COMPLETED** | PyTorch 1D CNN checkpointed (`cnn1d_best.pt`); Test ROC-AUC=0.8111, Recall=85.19% |
 | **Phase 7** | Implement CNN-LSTM spatio-temporal architecture | **COMPLETED** | CNN-LSTM checkpointed (`cnn_lstm_best.pt`); Test ROC-AUC=0.8379, PR-AUC=0.7751, Spec=85.33% |
 | **Phase 8** | Patient-independent Optuna tuning, MLflow, XAI & 11 visualizations | **COMPLETED** | Bayesian Optuna tuning (Test ROC-AUC=0.9659, Rec=100%), 11 publication figures in `artifacts/plots/`, 29 unit tests pass |
-| **Phase 9** | Implement FastAPI backend service | *In Progress / Next* | `/health`, `/predict`, `/explain`, `/model-info` endpoints |
-| **Phase 10**| Implement Streamlit interactive research dashboard | *Pending* | Multi-page clinical waveform & inference UI |
-| **Phase 11**| Containerize with Docker and Docker Compose | *Pending* | Local Docker build and container verification |
-| **Phase 12**| Cloud deployment preparation (Hugging Face / AWS) | *Pending* | Deployment manifest and live service checklist |
-| **Phase 13**| IEEE Academic Report & Final Submission Verification | *Pending* | 10-page academic report with empirical figures |
+| **Phase 9** | Implement FastAPI backend service | **COMPLETED** | `/health`, `/predict`, `/explain`, `/model-info` REST API with 8 passing tests |
+| **Phase 10**| Implement Streamlit interactive research dashboard | **COMPLETED** | Multi-tab clinical waveform, time-frequency & probability timeline dashboard |
+| **Phase 11**| Containerize with Docker and Docker Compose | **COMPLETED** | `Dockerfile` & `docker-compose.yml` multi-container architecture verified |
+| **Phase 12**| Cloud deployment preparation (Hugging Face / AWS) | **COMPLETED** | Complete staging & production playbook in `docs/DEPLOYMENT.md` |
+| **Phase 13**| IEEE Academic Report & Final Submission Verification | **COMPLETED** | Full 10-page paper in `report/IEEE_NeuroGuard_Research_Report.md` & audit script pass |
 
 ---
 
