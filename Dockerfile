@@ -14,10 +14,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy dependency requirements
-COPY requirements.txt .
-
-# Install Python packages
+COPY requirements-docker.txt .
+RUN pip install --no-cache-dir -r requirements-docker.txt
+RUN pip install --no-cache-dir filelock typing-extensions sympy networkx fsspec
+RUN pip install --no-cache-dir --no-deps --index-url https://download.pytorch.org/whl/cpu torch# Install Python packages
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy source code and configurations

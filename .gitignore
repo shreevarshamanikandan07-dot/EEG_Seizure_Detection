@@ -1,75 +1,47 @@
-# Byte-compiled / optimized / DLL files
+# Python environments and caches
+.venv/
+venv/
+env/
 __pycache__/
 *.py[cod]
-*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# Virtual environments
-venv/
-.venv/
-env/
-ENV/
-env.bak/
-venv.bak/
-
-# Environment variables
+# Secrets
 .env
-.env.local
+.env.*
+!.env.example
 
-# IDEs and Editors
+# IDE and operating system
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
 .DS_Store
 Thumbs.db
 
-# Large EEG Datasets (PhysioNet CHB-MIT) - CRITICAL: Never commit raw EEG recordings
-data/raw/*
-!data/raw/.gitkeep
-data/processed/*
-!data/processed/.gitkeep
-data/interim/*
-!data/interim/.gitkeep
+# Raw EEG datasets
+data/raw/
 
-# Experiment logs and large model checkpoints
-artifacts/models/*.pt
-artifacts/models/*.pth
-artifacts/models/*.joblib
-artifacts/models/*.onnx
-!artifacts/models/.gitkeep
+# Generated logs and temporary files
+*.log
+tmp/
+temp/
 
-# MLflow run databases/artifacts
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# ML experiment and training outputs
 mlruns/
-.mlflow/
+optuna.db
+*.db-journal
 
-# Pytest / Coverage
-.pytest_cache/
-.coverage
-htmlcov/
+# Streamlit cache
+.streamlit/secrets.toml
 
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Hugging Face credentials
+.cache/huggingface/
