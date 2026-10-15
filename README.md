@@ -1,3 +1,15 @@
+---
+title: NeuroGuard EEG Seizure Detection
+emoji: 🧠
+colorFrom: indigo
+colorTo: blue
+sdk: streamlit
+sdk_version: 1.40.1
+app_file: app.py
+pinned: false
+license: mit
+---
+
 # 🧠 NeuroGuard: Patient-Independent Explainable EEG Seizure Detection Using Deep Learning
 
 [![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue.svg)](https://www.python.org/)
