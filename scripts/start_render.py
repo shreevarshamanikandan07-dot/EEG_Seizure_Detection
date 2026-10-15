@@ -56,6 +56,10 @@ def main() -> None:
         "--server.address=0.0.0.0",
         "--server.headless=true",
         "--browser.gatherUsageStats=false",
+        "--server.enableCORS=false",
+        "--server.enableXsrfProtection=false",
+        "--server.enableWebsocketCompression=false",
+        "--server.maxMessageSize=200",
     ]
 
     try:
