@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """NeuroGuard — Clinical Decision Support Dashboard for Explainable EEG Seizure Detection.
 
 Premium Dark Glassmorphism Medical-AI Research Interface.
@@ -236,21 +237,21 @@ with st.sidebar:
         unsafe_allow_html=True,
     )
 
-    st.markdown('<div class="sidebar-section-header">🧭 Navigation</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sidebar-section-header">NAVIGATION</div>', unsafe_allow_html=True)
     selected_nav = st.radio(
         "Navigation",
         options=[
-            "⚡ Real-Time EEG Monitor",
-            "📊 Multi-Model Insights",
-            "🔍 Explainability & XAI",
-            "🔬 Time-Frequency & Spectral",
-            "📑 Clinical Rigor & Audit",
+            "Real-Time EEG Monitor",
+            "Multi-Model Insights",
+            "Explainability & XAI",
+            "Time-Frequency & Spectral",
+            "Clinical Rigor & Audit",
         ],
         label_visibility="collapsed",
     )
 
     st.markdown("---")
-    st.markdown('<div class="sidebar-section-header">⚙️ Inference Setup</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sidebar-section-header">INFERENCE SETUP</div>', unsafe_allow_html=True)
 
     selected_model_name = st.selectbox(
         "Detection Architecture:",
@@ -289,7 +290,7 @@ with st.sidebar:
     )
 
     st.markdown("---")
-    st.markdown('<div class="sidebar-section-header">📡 System Infrastructure</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sidebar-section-header">SYSTEM INFRASTRUCTURE</div>', unsafe_allow_html=True)
 
     # Real status badge
     if api_status["online"]:
@@ -465,7 +466,7 @@ st.markdown("<div style='height: 0.5rem;'></div>", unsafe_allow_html=True)
 # =========================================================================
 # SECTION 1: Real-Time EEG Monitor
 # =========================================================================
-if selected_nav == "⚡ Real-Time EEG Monitor":
+if selected_nav == "Real-Time EEG Monitor":
     st.markdown(
         f"""
         <div class="glass-panel glass-panel-cyan">
@@ -678,7 +679,7 @@ if selected_nav == "⚡ Real-Time EEG Monitor":
 # =========================================================================
 # SECTION 2: Multi-Model Insights & Benchmarking
 # =========================================================================
-elif selected_nav == "📊 Multi-Model Insights":
+elif selected_nav == "Multi-Model Insights":
     st.markdown(
         """
         <div class="glass-panel glass-panel-violet">
@@ -831,7 +832,7 @@ elif selected_nav == "📊 Multi-Model Insights":
 # =========================================================================
 # SECTION 3: Explainability & XAI Attributions
 # =========================================================================
-elif selected_nav == "🔍 Explainability & XAI":
+elif selected_nav == "Explainability & XAI":
     st.markdown(
         """
         <div class="glass-panel glass-panel-violet">
@@ -935,7 +936,7 @@ elif selected_nav == "🔍 Explainability & XAI":
 # =========================================================================
 # SECTION 4: Time-Frequency & Spectral Dynamics
 # =========================================================================
-elif selected_nav == "🔬 Time-Frequency & Spectral":
+elif selected_nav == "Time-Frequency & Spectral":
     st.markdown(
         """
         <div class="glass-panel glass-panel-cyan">
@@ -976,7 +977,7 @@ elif selected_nav == "🔬 Time-Frequency & Spectral":
 # =========================================================================
 # SECTION 5: Clinical Rigor, Architecture & Verification
 # =========================================================================
-elif selected_nav == "📑 Clinical Rigor & Audit":
+elif selected_nav == "Clinical Rigor & Audit":
     st.markdown(
         """
         <div class="glass-panel">
